@@ -7,26 +7,11 @@ import { CMSLink } from '@/components/Link'
 
 export const HeroBlock: React.FC<HeroBlockProps> = ({ 
   dataLabel, 
-  headline, 
-  gradientText, 
+  headlinePlain, 
+  headlineGradient, 
   description,
   links 
 }) => {
-  // Split headline into parts for gradient effect
-  const getHeadlineParts = () => {
-    if (!headline || !gradientText) return { before: headline, gradient: '', after: '' }
-    
-    const gradientIndex = headline.indexOf(gradientText)
-    if (gradientIndex === -1) return { before: headline, gradient: '', after: '' }
-    
-    return {
-      before: headline.substring(0, gradientIndex),
-      gradient: gradientText,
-      after: headline.substring(gradientIndex + gradientText.length)
-    }
-  }
-
-  const { before, gradient, after } = getHeadlineParts()
 
   return (
     <section
@@ -67,13 +52,12 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
           className="font-geist mb-6 text-display-lg font-bold leading-[1.05] md:text-display-lg-mobile lg:text-display-lg"
           style={{ color: 'var(--on-surface)' }}
         >
-          {before}
-          {gradient && (
+          {headlinePlain}{' '}
+          {headlineGradient && (
             <span className="bg-gradient-to-r from-[#006398] to-[#5bb8fe] bg-clip-text text-transparent">
-              {gradient}
+              {headlineGradient}
             </span>
           )}
-          {after}
         </h1>
 
         {description && (

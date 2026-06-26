@@ -3,7 +3,6 @@
 
 @config '../../../tailwind.config.mjs';
 
-@custom-variant dark (&:is([data-theme='dark'] *));
 @custom-variant sm (@media (width >= theme(--breakpoint-sm)));
 @custom-variant md (@media (width >= theme(--breakpoint-md)));
 @custom-variant lg (@media (width >= theme(--breakpoint-lg)));
@@ -185,17 +184,18 @@
   }
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee linear infinite;
+}
+
 @layer components {
   .btn-primary {
     @apply bg-primary text-on-primary px-8 py-3 rounded font-inter text-body-md font-medium shadow-elevated hover:shadow-hover transition-all;
     background: linear-gradient(135deg, var(--primary), var(--primary-container));
   }
-}
-
-html {
-  opacity: 0;
-}
-
-html[data-theme='light'] {
-  opacity: initial;
 }

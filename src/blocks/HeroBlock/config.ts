@@ -13,16 +13,16 @@ export const heroBlock: Block = {
       defaultValue: 'More Than Winning',
     },
     {
-      name: 'headline',
+      name: 'headlinePlain',
       type: 'text',
-      label: 'Headline',
-      defaultValue: 'Transforming Sports Through Technology',
+      label: 'Headline — Plain Part',
+      defaultValue: 'Transforming',
       required: true,
     },
     {
-      name: 'gradientText',
+      name: 'headlineGradient',
       type: 'text',
-      label: 'Gradient Text (part of headline to highlight)',
+      label: 'Headline — Gradient Part',
       defaultValue: 'Sports Through Technology',
     },
     {

@@ -15,6 +15,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
     _status: 'published',
     hero: {
       type: 'highImpact',
+      headlinePlain: 'Payload Website Template',
       links: [
         {
           link: {
