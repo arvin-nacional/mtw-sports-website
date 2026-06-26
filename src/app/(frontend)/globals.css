@@ -99,14 +99,18 @@
   --card-foreground: #191c1e;
   --popover: #ffffff;
   --popover-foreground: #191c1e;
-  --primary: #000000;
+  --primary: #1e3a5f;
   --primary-foreground: #ffffff;
-  --primary-container: #131b2e;
+  --primary-container: #1e3a5f;
   --on-primary-container: #7c839b;
   --secondary: #006398;
   --secondary-foreground: #ffffff;
   --secondary-container: #5bb8fe;
   --on-secondary-container: #00476e;
+  --tertiary: #5bb8fe;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #c4e7ff;
+  --on-tertiary-container: #004c69;
   --muted: #f2f4f6;
   --muted-foreground: #45464d;
   --accent: #e0e3e5;
@@ -150,6 +154,8 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-foreground: var(--on-tertiary);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
@@ -167,8 +173,11 @@
   --color-warning: var(--warning);
   --color-error: var(--error);
   --color-surface: var(--surface);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
   --color-surface-container: var(--surface-container);
   --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
   --color-on-surface: var(--on-surface);
   --color-on-surface-variant: var(--on-surface-variant);
   --color-outline: var(--outline);
@@ -180,7 +189,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+    @apply bg-background text-foreground min-h-[100vh] flex flex-col relative;
   }
 }
 

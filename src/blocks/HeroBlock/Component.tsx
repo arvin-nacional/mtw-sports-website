@@ -15,8 +15,8 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
 
   return (
     <section
-      className="relative flex flex-col items-center justify-center overflow-hidden px-6 py-32 text-center h-screen box-border"
-      style={{ backgroundColor: 'var(--surface)' }}
+      className="relative flex flex-col items-center justify-center overflow-hidden px-6 py-32 text-center h-screen box-border bg-[var(--surface)]"
+      
     >
       {/* Ambient glow — tonal, not harsh */}
       <div
@@ -49,7 +49,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
 
         {/* Display headline — Geist */}
         <h1
-          className="font-geist mb-6 text-display-lg font-bold leading-[1.05] md:text-display-lg-mobile lg:text-display-lg"
+          className="font-geist mb-6 text-2xl font-bold leading-[1.05] md:text-3xl md:text-display-lg-mobile lg:text-6xl"
           style={{ color: 'var(--on-surface)' }}
         >
           {headlinePlain}{' '}

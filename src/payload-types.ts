@@ -158,7 +158,16 @@ export interface UserAuthOperations {
 export interface Page {
   id: string;
   title: string;
-  layout: (HeroBlock | LogoRibbonBlock | CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (
+    | HeroBlock
+    | LogoRibbonBlock
+    | EcosystemSolutionsBlock
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -450,6 +459,65 @@ export interface LogoRibbonBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'logoRibbon';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EcosystemSolutionsBlock".
+ */
+export interface EcosystemSolutionsBlock {
+  sectionTitle?: string | null;
+  featuredEyebrow?: string | null;
+  featuredTitle?: string | null;
+  featuredDescription?: string | null;
+  featuredLink: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline') | null;
+  };
+  cards?:
+    | {
+        title: string;
+        description: string;
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        accentColor?: ('primary' | 'secondary' | 'tertiary') | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ecosystemSolutions';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1076,6 +1144,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         heroBlock?: T | HeroBlockSelect<T>;
         logoRibbon?: T | LogoRibbonBlockSelect<T>;
+        ecosystemSolutions?: T | EcosystemSolutionsBlockSelect<T>;
         cta?: T | CallToActionBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
@@ -1135,6 +1204,46 @@ export interface LogoRibbonBlockSelect<T extends boolean = true> {
     | {
         logo?: T;
         name?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "EcosystemSolutionsBlock_select".
+ */
+export interface EcosystemSolutionsBlockSelect<T extends boolean = true> {
+  sectionTitle?: T;
+  featuredEyebrow?: T;
+  featuredTitle?: T;
+  featuredDescription?: T;
+  featuredLink?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
+      };
+  cards?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        accentColor?: T;
         id?: T;
       };
   id?: T;
