@@ -33,6 +33,12 @@ const eslintConfig = [
   {
     ignores: ['.next/', 'src/payload-types.ts', 'src/payload-generated-schema.ts'],
   },
+  {
+    files: ['**/*.css'],
+    rules: {
+      'css/no-unknown-at-rules': 'off',
+    },
+  },
 ]
 
 export default eslintConfig

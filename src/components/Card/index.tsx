@@ -32,18 +32,18 @@ export const Card: React.FC<{
   return (
     <article
       className={cn(
-        'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
+        'border border-outline rounded-lg overflow-hidden bg-surface-container-lowest hover:cursor-pointer hover:shadow-elevated transition-shadow',
         className,
       )}
       ref={card.ref}
     >
-      <div className="relative w-full ">
-        {!metaImage && <div className="">No image</div>}
+      <div className="relative w-full">
+        {!metaImage && <div className="bg-surface-container h-48 flex items-center justify-center text-on-surface-variant">No image</div>}
         {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
       </div>
-      <div className="p-4">
+      <div className="p-6">
         {showCategories && hasCategories && (
-          <div className="uppercase text-sm mb-4">
+          <div className="font-mono text-label-sm text-secondary mb-3 uppercase tracking-wide">
             {categories?.map((category, index) => {
               if (typeof category === 'object') {
                 const { title: titleFromCategory } = category
@@ -65,15 +65,19 @@ export const Card: React.FC<{
           </div>
         )}
         {titleToUse && (
-          <div className="prose">
-            <h3>
-              <Link className="not-prose" href={href} ref={link.ref}>
+          <div className="mb-3">
+            <h3 className="font-geist text-headline-md font-semibold text-primary leading-tight">
+              <Link className="hover:text-secondary transition-colors" href={href} ref={link.ref}>
                 {titleToUse}
               </Link>
             </h3>
           </div>
         )}
-        {description && <div className="mt-2">{description && <p>{sanitizedDescription}</p>}</div>}
+        {description && (
+          <div className="font-inter text-body-md text-on-surface-variant leading-relaxed">
+            <p>{sanitizedDescription}</p>
+          </div>
+        )}
       </div>
     </article>
   )
