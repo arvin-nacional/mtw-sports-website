@@ -15,8 +15,8 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
 
   return (
     <section
-      className="relative flex flex-col items-center justify-center overflow-hidden px-6 py-32 text-center"
-      style={{ minHeight: '88vh', backgroundColor: 'var(--surface)' }}
+      className="relative flex flex-col items-center justify-center overflow-hidden px-6 py-32 text-center h-screen box-border"
+      style={{ backgroundColor: 'var(--surface)' }}
     >
       {/* Ambient glow — tonal, not harsh */}
       <div

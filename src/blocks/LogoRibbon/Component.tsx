@@ -49,6 +49,7 @@ export const LogoRibbonBlock: React.FC<LogoRibbonBlockProps> = ({ label, logos, 
                   alt={item.name}
                   width={media.width ?? 128}
                   height={media.height ?? 40}
+                  unoptimized
                   className="max-h-10 w-auto object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
                 />
               </div>
