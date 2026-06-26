@@ -10,6 +10,7 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { HeroBlock } from '@/blocks/HeroBlock/Component'
 import { LogoRibbonBlock } from '@/blocks/LogoRibbon/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import { ProductEcosystemBlock } from '@/blocks/ProductEcosystem/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -20,6 +21,7 @@ const blockComponents = {
   heroBlock: HeroBlock,
   logoRibbon: LogoRibbonBlock,
   mediaBlock: MediaBlock,
+  productEcosystem: ProductEcosystemBlock,
 }
 
 export const RenderBlocks: React.FC<{

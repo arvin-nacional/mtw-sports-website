@@ -162,6 +162,7 @@ export interface Page {
     | HeroBlock
     | LogoRibbonBlock
     | EcosystemSolutionsBlock
+    | ProductEcosystemBlock
     | CallToActionBlock
     | ContentBlock
     | MediaBlock
@@ -518,6 +519,87 @@ export interface EcosystemSolutionsBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'ecosystemSolutions';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductEcosystemBlock".
+ */
+export interface ProductEcosystemBlock {
+  eyebrow?: string | null;
+  title?: string | null;
+  collections?:
+    | {
+        icon?: string | null;
+        label: string;
+        category: string;
+        description: string;
+        products?:
+          | {
+              product: string;
+              id?: string | null;
+            }[]
+          | null;
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  packages?:
+    | {
+        label: string;
+        category?: string | null;
+        tagline: string;
+        description: string;
+        includes?:
+          | {
+              item: string;
+              id?: string | null;
+            }[]
+          | null;
+        accentColor?: ('primary' | 'secondary' | 'tertiary') | null;
+        accentBg?: ('blue' | 'orange') | null;
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'productEcosystem';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1145,6 +1227,7 @@ export interface PagesSelect<T extends boolean = true> {
         heroBlock?: T | HeroBlockSelect<T>;
         logoRibbon?: T | LogoRibbonBlockSelect<T>;
         ecosystemSolutions?: T | EcosystemSolutionsBlockSelect<T>;
+        productEcosystem?: T | ProductEcosystemBlockSelect<T>;
         cta?: T | CallToActionBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
@@ -1244,6 +1327,68 @@ export interface EcosystemSolutionsBlockSelect<T extends boolean = true> {
               appearance?: T;
             };
         accentColor?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductEcosystemBlock_select".
+ */
+export interface ProductEcosystemBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  collections?:
+    | T
+    | {
+        icon?: T;
+        label?: T;
+        category?: T;
+        description?: T;
+        products?:
+          | T
+          | {
+              product?: T;
+              id?: T;
+            };
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  packages?:
+    | T
+    | {
+        label?: T;
+        category?: T;
+        tagline?: T;
+        description?: T;
+        includes?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
+        accentColor?: T;
+        accentBg?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
         id?: T;
       };
   id?: T;

@@ -16,6 +16,7 @@ interface HeaderClientProps {
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   /* Storing the value in a useState to avoid hydration errors */
   const [theme, setTheme] = useState<string | null>(null)
+  const [isScrolled, setIsScrolled] = useState(false)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
 
@@ -29,9 +30,26 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerTheme])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 bg-transparent border-none shadow-md w-full" {...(theme ? { 'data-theme': theme } : {})}>
-      <div className="container py-6 flex justify-between">
+    <header
+      className={`sticky top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/80 backdrop-blur-md shadow-md'
+          : 'bg-transparent shadow-none'
+      }`}
+      {...(theme ? { 'data-theme': theme } : {})}
+    >
+      <div className="container py-4 flex justify-between">
         <Link href="/">
           <Logo loading="eager" priority="high" className="invert" />
         </Link>
