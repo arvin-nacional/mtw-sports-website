@@ -2188,6 +2188,14 @@ export interface Header {
  */
 export interface Footer {
   id: string;
+  tagline?: string | null;
+  email?: string | null;
+  phone?: string | null;
+  address?: string | null;
+  linkedIn?: string | null;
+  facebook?: string | null;
+  twitter?: string | null;
+  instagram?: string | null;
   navItems?:
     | {
         link: {
@@ -2208,6 +2216,7 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  copyright?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2239,6 +2248,14 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  tagline?: T;
+  email?: T;
+  phone?: T;
+  address?: T;
+  linkedIn?: T;
+  facebook?: T;
+  twitter?: T;
+  instagram?: T;
   navItems?:
     | T
     | {
@@ -2253,6 +2270,7 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  copyright?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -166,10 +166,7 @@ export const ProductEcosystemBlock: React.FC<ProductEcosystemBlockProps> = ({
                         {...pkg.link}
                         appearance="inline"
                         className={`mt-auto inline-flex w-fit items-center gap-2 rounded-lg bg-gradient-to-r ${accentGradient} px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md`}
-                      >
-                        View Package
-                        <span>→</span>
-                      </CMSLink>
+                      />
                     )}
                   </div>
                 )
