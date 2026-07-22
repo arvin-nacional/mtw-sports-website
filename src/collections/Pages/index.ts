@@ -3,13 +3,17 @@ import type { CollectionConfig } from 'payload'
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { Archive } from '../../blocks/ArchiveBlock/config'
+import { audienceBlock } from '../../blocks/AudienceBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
+import { contactSectionBlock } from '../../blocks/ContactSection/config'
 import { ecosystemSolutions } from '../../blocks/EcosystemSolutions/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { productEcosystem } from '../../blocks/ProductEcosystem/config'
+import { founderBlock } from '../../blocks/FounderBlock/config'
 import { heroBlock } from '../../blocks/HeroBlock/config'
 import { logoRibbon } from '../../blocks/LogoRibbon/config'
+import { missionBlock } from '../../blocks/MissionBlock/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -71,7 +75,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [heroBlock, logoRibbon, ecosystemSolutions, productEcosystem, CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [heroBlock, logoRibbon, missionBlock, founderBlock, audienceBlock, ecosystemSolutions, productEcosystem, contactSectionBlock, CallToAction, Content, MediaBlock, Archive, FormBlock],
               required: true,
               admin: {
                 initCollapsed: true,

@@ -6,8 +6,8 @@ import type { ProductEcosystemBlock as ProductEcosystemBlockProps } from '@/payl
 import { CMSLink } from '@/components/Link'
 
 const accentBgMap = {
-  blue: 'rgba(142,213,255,0.07)',
-  orange: 'rgba(255,193,118,0.07)',
+  blue: 'bg-gradient-to-br from-[#f0f7ff] to-[#e8f4ff]',
+  orange: 'bg-gradient-to-br from-[#fff8f0] to-[#fff3e8]',
 }
 
 const accentTextMap = {
@@ -22,6 +22,12 @@ const accentBorderMap = {
   tertiary: 'border-l-tertiary',
 }
 
+const accentGradientMap = {
+  primary: 'from-primary to-secondary',
+  secondary: 'from-secondary to-tertiary',
+  tertiary: 'from-tertiary to-secondary',
+}
+
 export const ProductEcosystemBlock: React.FC<ProductEcosystemBlockProps> = ({
   eyebrow,
   title,
@@ -29,21 +35,21 @@ export const ProductEcosystemBlock: React.FC<ProductEcosystemBlockProps> = ({
   packages,
 }) => {
   return (
-    <section className="bg-surface px-6 py-24 lg:px-12">
+    <section className="bg-white px-6 py-28 lg:px-12">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="mb-14">
-          <p className="text-primary/70 mb-3 text-xs font-semibold uppercase tracking-[0.3em]">
+        <div className="mb-16 text-center">
+          <p className="text-secondary mb-4 text-xs font-bold uppercase tracking-[0.4em]">
             {eyebrow}
           </p>
-          <h2 className="text-on-surface text-3xl font-bold tracking-tight">
+          <h2 className="text-primary mb-5 text-4xl font-extrabold tracking-tight lg:text-5xl">
             {title}
           </h2>
-          <div className="bg-primary mt-4 h-[2px] w-12 rounded-full" />
+          <div className="mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-primary via-secondary to-tertiary" />
         </div>
 
-        {/* Collections grid */}
-        <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Collections grid - Bento style */}
+        <div className="mb-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {collections?.map((col) => {
             const products = col.products?.map((p) => p.product).filter(Boolean) || []
 
@@ -52,38 +58,46 @@ export const ProductEcosystemBlock: React.FC<ProductEcosystemBlockProps> = ({
                 key={col.label}
                 {...col.link}
                 appearance="inline"
-                className="group flex flex-col rounded-xl border border-[rgba(42,58,92,0.15)] p-6 transition-colors hover:bg-surface-container-low"
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-primary/10 bg-gradient-to-b from-white to-[#f8fafc] p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10"
               >
+                {/* Hover gradient overlay */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                
                 {/* Icon + category */}
-                <div className="mb-4 flex items-center justify-between">
-                  <span className="text-primary/50 text-xl" aria-hidden>
+                <div className="relative mb-5 flex items-center justify-between">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-lg text-primary transition-colors group-hover:bg-primary group-hover:text-white" aria-hidden>
                     {col.icon}
                   </span>
-                  <span className="text-on-surface/35 text-[10px] font-semibold uppercase tracking-[0.2em]">
+                  <span className="text-on-surface-variant text-[10px] font-bold uppercase tracking-[0.2em]">
                     {col.category}
                   </span>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-on-surface mb-2 text-base font-bold">
+                <h3 className="text-primary relative mb-3 text-lg font-bold transition-colors group-hover:text-secondary">
                   {col.label}
                 </h3>
 
                 {/* Description */}
-                <p className="text-on-surface/50 mb-5 text-sm leading-relaxed">
+                <p className="text-on-surface-variant relative mb-6 text-sm leading-relaxed">
                   {col.description}
                 </p>
 
                 {/* Product chips */}
-                <div className="mt-auto flex flex-wrap gap-2">
+                <div className="relative mt-auto flex flex-wrap gap-2">
                   {products.map((p) => (
                     <span
                       key={p}
-                      className="bg-surface-container-high text-primary rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.05em]"
+                      className="rounded-full bg-primary/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-primary transition-colors group-hover:bg-primary group-hover:text-white"
                     >
                       {p}
                     </span>
                   ))}
+                </div>
+                
+                {/* Arrow indicator */}
+                <div className="absolute bottom-7 right-7 flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary opacity-0 transition-all duration-300 group-hover:opacity-100">
+                  <span className="text-sm">→</span>
                 </div>
               </CMSLink>
             )
@@ -92,50 +106,54 @@ export const ProductEcosystemBlock: React.FC<ProductEcosystemBlockProps> = ({
 
         {/* Packages */}
         {packages && packages.length > 0 && (
-          <div className="mt-12">
-            <p className="text-tertiary/80 mb-6 text-xs font-semibold uppercase tracking-[0.3em]">
-              Bundled Solutions
-            </p>
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <div className="mt-16">
+            <div className="mb-8 flex items-center gap-4">
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-tertiary/30" />
+              <p className="text-tertiary text-xs font-bold uppercase tracking-[0.3em]">
+                Bundled Solutions
+              </p>
+              <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-tertiary/30" />
+            </div>
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
               {packages.map((pkg) => {
                 const accentColor = pkg.accentColor || 'primary'
                 const accentBg = accentBgMap[(pkg.accentBg as 'blue' | 'orange') || 'blue']
                 const accentText = accentTextMap[accentColor]
                 const accentBorder = accentBorderMap[accentColor]
+                const accentGradient = accentGradientMap[accentColor]
                 const items = pkg.includes?.map((i) => i.item).filter(Boolean) || []
 
                 return (
                   <div
                     key={pkg.label}
-                    className={`flex flex-col rounded-xl border border-[rgba(42,58,92,0.15)] border-l-[3px] p-8 ${accentBorder}`}
-                    style={{ backgroundColor: accentBg }}
+                    className={`group relative flex flex-col overflow-hidden rounded-2xl border border-primary/10 border-l-4 p-9 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${accentBorder} ${accentBg}`}
                   >
                     {/* Header */}
-                    <div className="mb-1 flex items-center gap-3">
-                      <span className={`text-[10px] font-semibold uppercase tracking-[0.2em] opacity-70 ${accentText}`}>
+                    <div className="mb-2 flex items-center gap-3">
+                      <span className={`text-[10px] font-bold uppercase tracking-[0.2em] ${accentText}`}>
                         {pkg.category}
                       </span>
                     </div>
-                    <h3 className="text-on-surface mb-1 text-2xl font-bold">
+                    <h3 className="text-primary mb-2 text-2xl font-extrabold">
                       {pkg.label}
                     </h3>
-                    <p className={`mb-4 text-sm font-medium ${accentText}`}>
+                    <p className={`mb-5 text-sm font-semibold ${accentText}`}>
                       {pkg.tagline}
                     </p>
-                    <p className="text-on-surface/55 mb-6 text-sm leading-relaxed">
+                    <p className="text-on-surface-variant mb-7 text-sm leading-relaxed">
                       {pkg.description}
                     </p>
 
                     {/* Includes */}
-                    <div className="mb-6">
-                      <p className="text-on-surface/40 mb-3 text-[10px] font-semibold uppercase tracking-[0.2em]">
+                    <div className="mb-7">
+                      <p className="text-on-surface-variant/60 mb-4 text-[10px] font-bold uppercase tracking-[0.2em]">
                         Includes
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {items.map((item) => (
                           <span
                             key={item}
-                            className={`bg-surface-container-high rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.05em] ${accentText}`}
+                            className={`rounded-full border border-current/20 bg-white/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wide ${accentText}`}
                           >
                             {item}
                           </span>
@@ -147,9 +165,10 @@ export const ProductEcosystemBlock: React.FC<ProductEcosystemBlockProps> = ({
                       <CMSLink
                         {...pkg.link}
                         appearance="inline"
-                        className={`mt-auto inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.15em] transition-opacity hover:opacity-70 ${accentText}`}
+                        className={`mt-auto inline-flex w-fit items-center gap-2 rounded-lg bg-gradient-to-r ${accentGradient} px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md`}
                       >
-                        View Package →
+                        View Package
+                        <span>→</span>
                       </CMSLink>
                     )}
                   </div>

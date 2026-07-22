@@ -31,6 +31,30 @@ export const heroBlock: Block = {
       label: 'Description',
       defaultValue: 'Engineering elite performance through kinetic data. We transform athletic potential into measurable dominance with the world\'s most advanced sports tracking ecosystem.',
     },
+    {
+      name: 'backgroundImage',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Background Image',
+      admin: {
+        description: 'Optional hero background image. Leave empty for gradient background.',
+      },
+    },
+    {
+      name: 'overlayOpacity',
+      type: 'select',
+      label: 'Overlay Darkness',
+      defaultValue: 'medium',
+      options: [
+        { label: 'Light', value: 'light' },
+        { label: 'Medium', value: 'medium' },
+        { label: 'Dark', value: 'dark' },
+      ],
+      admin: {
+        description: 'Controls how dark the overlay is on the background image.',
+        condition: (_, siblingData) => Boolean(siblingData?.backgroundImage),
+      },
+    },
     linkGroup({
       overrides: {
         maxRows: 2,

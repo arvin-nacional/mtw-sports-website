@@ -3,24 +3,32 @@ import React, { Fragment } from 'react'
 import type { Page } from '@/payload-types'
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
+import { AudienceBlock } from '@/blocks/AudienceBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
+import { ContactSectionBlock } from '@/blocks/ContactSection/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { EcosystemSolutionsBlock } from '@/blocks/EcosystemSolutions/Component'
 import { FormBlock } from '@/blocks/Form/Component'
+import { FounderBlock } from '@/blocks/FounderBlock/Component'
 import { HeroBlock } from '@/blocks/HeroBlock/Component'
 import { LogoRibbonBlock } from '@/blocks/LogoRibbon/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import { MissionBlock } from '@/blocks/MissionBlock/Component'
 import { ProductEcosystemBlock } from '@/blocks/ProductEcosystem/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
+  audienceBlock: AudienceBlock,
+  contactSectionBlock: ContactSectionBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
   ecosystemSolutions: EcosystemSolutionsBlock,
   formBlock: FormBlock,
+  founderBlock: FounderBlock,
   heroBlock: HeroBlock,
   logoRibbon: LogoRibbonBlock,
   mediaBlock: MediaBlock,
+  missionBlock: MissionBlock,
   productEcosystem: ProductEcosystemBlock,
 }
 

@@ -42,16 +42,16 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
   return (
     <header
-      className={`sticky top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 backdrop-blur-md shadow-md'
-          : 'bg-transparent shadow-none'
+          ? 'bg-white/90 backdrop-blur-lg shadow-md'
+          : 'bg-transparent'
       }`}
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      <div className="container py-4 flex justify-between">
+      <div className="container py-4 flex justify-between items-center">
         <Link href="/">
-          <Logo loading="eager" priority="high" className="invert" />
+          <Logo loading="eager" priority="high" />
         </Link>
         <HeaderNav data={data} />
       </div>
