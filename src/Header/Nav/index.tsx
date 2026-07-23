@@ -43,14 +43,13 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex flex-col p-6 gap-2">
+        <div className="flex flex-col p-6 gap-2" onClick={() => setIsOpen(false)}>
           {navItems.map(({ link }, i) => (
             <CMSLink
               key={i}
               {...link}
               appearance="link"
               className="font-inter text-lg font-medium text-on-surface hover:text-secondary hover:bg-primary/5 px-4 py-3 rounded-lg transition-colors"
-              onClick={() => setIsOpen(false)}
             />
           ))}
         </div>
