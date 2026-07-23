@@ -6,7 +6,7 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   description: 'MTW brings together cameras, analytics, streaming, scoring, and athlete assessment tools into one sports technology ecosystem.',
   images: [
     {
-      url: `${getServerSideURL()}/og-image.webp`,
+      url: `${getServerSideURL()}/website-template-OG.webp`,
     },
   ],
   siteName: 'MTW Sports',
