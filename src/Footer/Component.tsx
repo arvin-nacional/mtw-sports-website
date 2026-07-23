@@ -36,7 +36,7 @@ export async function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="mb-6 inline-block">
-              <Logo className="brightness-0 invert" />
+              <Logo />
             </Link>
             {tagline && (
               <p className="mb-6 text-sm leading-relaxed text-white/70">{tagline}</p>
