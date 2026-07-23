@@ -7,6 +7,9 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   images: [
     {
       url: `${getServerSideURL()}/website-template-OG.webp`,
+      width: 1200,
+      height: 630,
+      alt: 'MTW Sports - More Than Winning',
     },
   ],
   siteName: 'MTW Sports',
