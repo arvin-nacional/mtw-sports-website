@@ -1,3 +1,5 @@
+'use client'
+
 import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
@@ -15,6 +17,7 @@ import { LogoRibbonBlock } from '@/blocks/LogoRibbon/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { MissionBlock } from '@/blocks/MissionBlock/Component'
 import { ProductEcosystemBlock } from '@/blocks/ProductEcosystem/Component'
+import { ScrollReveal } from '@/components/ScrollReveal'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -32,6 +35,8 @@ const blockComponents = {
   productEcosystem: ProductEcosystemBlock,
 }
 
+const noAnimationBlocks = ['heroBlock']
+
 export const RenderBlocks: React.FC<{
   blocks: Page['layout'][0][]
 }> = (props) => {
@@ -47,13 +52,22 @@ export const RenderBlocks: React.FC<{
 
           if (blockType && blockType in blockComponents) {
             const Block = blockComponents[blockType]
+            const skipAnimation = noAnimationBlocks.includes(blockType)
 
             if (Block) {
-              return (
-                <div key={index}>
+              const blockContent = (
+                <>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
-                </div>
+                </>
+              )
+
+              return skipAnimation ? (
+                <div key={index}>{blockContent}</div>
+              ) : (
+                <ScrollReveal key={index} delay={index > 1 ? 100 : 0}>
+                  {blockContent}
+                </ScrollReveal>
               )
             }
           }
