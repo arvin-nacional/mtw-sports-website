@@ -130,7 +130,7 @@ export async function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
-          <p className="text-sm text-white/50">{copyright || '© 2025 MTW Sports. All rights reserved.'}</p>
+          <p className="text-sm text-white/50">{copyright || '© 2026 MTW Sports. All rights reserved.'}</p>
           <p className="text-xs text-white/30">
             Building the future of sports in Southeast Asia
           </p>
